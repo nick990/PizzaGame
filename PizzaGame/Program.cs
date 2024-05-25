@@ -1,8 +1,8 @@
 ﻿using PizzaGame;
 using PizzaGame.TakePizzaStrategies;
 
-
-Player player1 = new Player { Name = "PLAYER 1", TakePizzaStrategy = new HumanTakePizzaStrategy()};
-Player player2 = new Player { Name = "PLAYER 2", TakePizzaStrategy = new CpuTakePizzaStrategy() };
+var playerFactory = PlayerFactory.Instance;
+Player player1 = playerFactory.CreatePlayerInteractive();
+Player player2 = playerFactory.CreatePlayerInteractive();
 Game game = new Game(10, player1, player2);
 game.Play();
