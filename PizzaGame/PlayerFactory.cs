@@ -14,7 +14,7 @@ namespace PizzaGame
         private PlayerFactory() { }
         public Player CreatePlayerInteractive()
         {
-            Console.WriteLine("Enter player name:");
+            Console.Write("Enter player name: ");
             var name = Console.ReadLine();
             return new Player
             {
@@ -25,7 +25,7 @@ namespace PizzaGame
 
         private ITakePizzasStrategy SelectStrategyInteractive()
         {
-            Console.WriteLine("Select Player Type: 1 - Human, 2 - CPU");
+            Console.WriteLine("Select Player Type:\n 1 - Human\n 2 - CPU");
             var choice = Console.ReadLine();
             switch (choice)
             {

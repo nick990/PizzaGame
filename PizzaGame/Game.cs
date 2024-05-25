@@ -32,7 +32,7 @@ namespace PizzaGame
         {
             while (Pizzas > 0)
             {
-                Console.WriteLine($"There are {Pizzas} pizzas left.");
+                Console.WriteLine($"There {(Pizzas > 1 ? "are" : "is")} {Pizzas} {(Pizzas > 1 ? "pizzas" : "pizza")} left.");
                 Console.WriteLine($"{_currentPlayer.Name}'s turn.");
                 var validMoves = GetValidMoves();
                 //If there are no valid moves, the player has to skip their turn
@@ -56,7 +56,7 @@ namespace PizzaGame
                 var pizzasToTake = _currentPlayer.TakePizzas(validMoves);
                 Pizzas -= pizzasToTake;
                 _lastPizzasTaken = pizzasToTake;
-                Console.WriteLine($"{_currentPlayer.Name} took {pizzasToTake} pizzas.");
+                Console.WriteLine($"{_currentPlayer.Name} took {pizzasToTake} {(pizzasToTake > 1 ? "pizzas" : "pizza")}.");
                 Console.WriteLine();
                 ChangePlayer();
             }
