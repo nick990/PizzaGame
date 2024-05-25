@@ -1,4 +1,4 @@
-﻿using PizzaGame.TakePizzaStrategies;
+﻿using PizzaGame.TakePizzasStrategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +19,20 @@ namespace PizzaGame
             return new Player
             {
                 Name = name,
-                TakePizzaStrategy = SelectStrategyInteractive()
+                TakePizzasStrategy = SelectStrategyInteractive()
             };
         }
 
-        private ITakePizzaStrategy SelectStrategyInteractive()
+        private ITakePizzasStrategy SelectStrategyInteractive()
         {
             Console.WriteLine("Select Player Type: 1 - Human, 2 - CPU");
             var choice = Console.ReadLine();
             switch (choice)
             {
                 case "1":
-                    return new HumanTakePizzaStrategy();
+                    return new HumanTakePizzasStrategy();
                 case "2":
-                    return new CpuTakePizzaStrategy();
+                    return new CpuTakePizzasStrategy();
                 default:
                     Console.WriteLine("Invalid choice!");
                     return SelectStrategyInteractive();

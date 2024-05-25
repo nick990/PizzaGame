@@ -1,5 +1,5 @@
 ﻿using PizzaGame;
-using PizzaGame.TakePizzaStrategies;
+using PizzaGame.TakePizzasStrategies;
 
 var game = Game.CreateNewGameInteractive();
 game.Play();

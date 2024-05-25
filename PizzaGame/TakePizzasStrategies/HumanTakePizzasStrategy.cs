@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PizzaGame.TakePizzaStrategies
+namespace PizzaGame.TakePizzasStrategies
 {
-    public class HumanTakePizzaStrategy : ITakePizzaStrategy
+    public class HumanTakePizzasStrategy : ITakePizzasStrategy
     {
         public int TakePizzas(IEnumerable<int> validMoves)
         {

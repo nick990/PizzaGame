@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaGame.TakePizzaStrategies
+namespace PizzaGame.TakePizzasStrategies
 {
-    public class PredefinedTakePizzaStrategy : ITakePizzaStrategy
+    public class PredefinedTakePizzasStrategy : ITakePizzasStrategy
     {
         private readonly Queue<int> _moves;
-        public PredefinedTakePizzaStrategy(Queue<int> moves)
+        public PredefinedTakePizzasStrategy(Queue<int> moves)
         {
             _moves = moves;
         }
