@@ -24,7 +24,7 @@ namespace PizzaGame
 
         /// <summary>
         /// Starts the game
-        /// Returns the winner
+        /// Returns the winner Player
         /// </summary>
         public Player Play()
         {
@@ -32,7 +32,7 @@ namespace PizzaGame
             {
                 Console.WriteLine($"There are {Pizzas} pizzas left.");
                 Console.WriteLine($"{_currentPlayer.Name}'s turn.");
-                //Se non ho mosse valide, salto il turno
+                //If there are no valid moves, the player has to skip their turn
                 var validMoves = GetValidMoves();
                 if (validMoves.Count() == 0)
                 {
@@ -57,6 +57,7 @@ namespace PizzaGame
             {
                 validMoves.Remove(_lastPizzasTaken.Value);
             }
+            validMoves.RemoveAll(move => move > Pizzas);
             return validMoves;
         }
 
