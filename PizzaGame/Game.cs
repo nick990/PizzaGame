@@ -8,6 +8,8 @@ namespace PizzaGame
 {
     public class Game
     {
+        const int MIN_PIZZAS = 11;
+        const int MAX_PIZZAS = 20;
        
         public int Pizzas { get; private set; }
         public Player Player1 { get; set; }
@@ -67,6 +69,10 @@ namespace PizzaGame
             _currentPlayer = _currentPlayer == Player1 ? Player2 : Player1;
         }
 
+        /// <summary>
+        /// Return the valid moves for the current player
+        /// </summary>
+        /// <returns></returns>
         private IEnumerable<int> GetValidMoves()
         {
             List<int> validMoves = new List<int>{1,2,3};
@@ -82,6 +88,15 @@ namespace PizzaGame
         {
             Console.WriteLine("Pizzas are over...Game over!");
             Console.WriteLine($"{_currentPlayer.Name} wins!");
+        }
+
+        public static Game CreateNewGameInteractive()
+        {
+            var playerFactory = PlayerFactory.Instance;
+            Player player1 = playerFactory.CreatePlayerInteractive();
+            Player player2 = playerFactory.CreatePlayerInteractive();
+            var pizzas = new Random().Next(MIN_PIZZAS, MAX_PIZZAS);
+            return new Game(pizzas, player1, player2);
         }
 
     }
