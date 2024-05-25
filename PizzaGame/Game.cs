@@ -32,22 +32,39 @@ namespace PizzaGame
             {
                 Console.WriteLine($"There are {Pizzas} pizzas left.");
                 Console.WriteLine($"{_currentPlayer.Name}'s turn.");
-                //If there are no valid moves, the player has to skip their turn
                 var validMoves = GetValidMoves();
+                //If there are no valid moves, the player has to skip their turn
                 if (validMoves.Count() == 0)
                 {
                     Console.WriteLine($"{_currentPlayer.Name} has to skip this turn.");
-                    break;
+                    Console.WriteLine();
+                    ChangePlayer();
+                    _lastPizzasTaken = null;
+                    continue;
+                }
+                //If the only valid move is to take all the pizzas, the player loses
+                if (validMoves.Count() == 1 && validMoves.First() == Pizzas)
+                {
+                    Console.WriteLine($"{_currentPlayer.Name} has to take the last pizza and loses.");
+                    Console.WriteLine();
+                    Pizzas = 0;
+                    ChangePlayer();
+                    break;                    
                 }
                 var pizzasToTake = _currentPlayer.TakePizzas(validMoves);
                 Pizzas -= pizzasToTake;
                 _lastPizzasTaken = pizzasToTake;
                 Console.WriteLine($"{_currentPlayer.Name} took {pizzasToTake} pizzas.");
                 Console.WriteLine();
-                _currentPlayer = _currentPlayer == Player1 ? Player2 : Player1;
+                ChangePlayer();
             }
             GameOver();
             return _currentPlayer;
+        }
+
+        private void ChangePlayer()
+        {
+            _currentPlayer = _currentPlayer == Player1 ? Player2 : Player1;
         }
 
         private IEnumerable<int> GetValidMoves()
@@ -63,7 +80,7 @@ namespace PizzaGame
 
         private void GameOver()
         {
-            Console.WriteLine("Game over!");
+            Console.WriteLine("Pizzas are over...Game over!");
             Console.WriteLine($"{_currentPlayer.Name} wins!");
         }
 
