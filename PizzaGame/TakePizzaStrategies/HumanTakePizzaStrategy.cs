@@ -12,8 +12,17 @@ namespace PizzaGame.TakePizzaStrategies
         public int TakePizzas(IEnumerable<int> validMoves)
         {
             Console.WriteLine($"How many pizzas do you want to take?");
-            //TOOD: check if the input is a number
-            int pizzasToTake = int.Parse(Console.ReadLine());
+            int pizzasToTake;
+            bool isNumber;
+            do
+            {
+                isNumber = int.TryParse(Console.ReadLine(), out pizzasToTake);
+                if (!isNumber)
+                {
+                    Console.WriteLine("Please enter a number.");
+                }
+            } while (!isNumber);
+
             if (!validMoves.Contains(pizzasToTake))
             {
                 Console.WriteLine($"You can only take {string.Join(", ", validMoves.Select(m => m.ToString()))} pizzas.");
