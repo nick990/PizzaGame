@@ -93,7 +93,9 @@ namespace PizzaGame
         public static Game CreateNewGameInteractive()
         {
             var playerFactory = PlayerFactory.Instance;
+            Console.WriteLine("Player 1");
             Player player1 = playerFactory.CreatePlayerInteractive();
+            Console.WriteLine("Player 2");
             Player player2 = playerFactory.CreatePlayerInteractive();
             var pizzas = new Random().Next(MIN_PIZZAS, MAX_PIZZAS);
             return new Game(pizzas, player1, player2);
